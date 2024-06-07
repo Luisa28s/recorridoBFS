@@ -30,7 +30,7 @@ def mostrar_matriz_adyacencia(matriz_adyacencia):
         print(fila)
 
 def mostrar_vector_visitado(visitado):
-    print("Vector de nodos visitados:", visitado)
+    print("Vector visitados:", visitado)
 
 def BFS(matriz_adyacencia, inicio, tam):
     vertices = len(matriz_adyacencia)
@@ -48,7 +48,7 @@ def BFS(matriz_adyacencia, inicio, tam):
     #Mientras la cola no esté vacía
     while primero != 0:
         v, primero, ultimo = desencolar(cola, primero, ultimo, tam) #Desencola el nodo y obtiene el indice
-        print("Visitando nodo:", v + 1)  # Mostrar el nodo actual que se está visitando
+        print("Visitando el nodo:", v + 1)  # Mostrar el nodo actual que se está visitando
 
         # Recorrer todos los nodos adyacentes al nodo v
         for w in range(vertices):
@@ -56,10 +56,9 @@ def BFS(matriz_adyacencia, inicio, tam):
                 visitado[w] = 1 #Marcar como visitado
                 primero, ultimo = encolar(cola, primero, ultimo, tam, w) #Encolar el nodo W
 
-    print("\nVisitados después del recorrido:")
+    print("\nVector después del recorrido:")
     mostrar_vector_visitado(visitado)
 
-# Grafo representado como un diccionario de listas de adyacencia
 grafo = {
     1: [2, 3],
     2: [1, 4, 5, 9],
@@ -80,9 +79,9 @@ for nodo, adyacentes in grafo.items():
     for adyacente in adyacentes:
         matriz_adyacencia[nodo - 1][adyacente - 1] = 1
 
-inicio = int(input("Ingrese el nodo inicial para el recorrido BFS (1 a 9): ")) - 1
+inicio = int(input("Ingrese el nodo inicial (1 a 9): ")) - 1
 
-print("\nRecorrido BFS del grafo desde el nodo", inicio + 1)
+print("\nInicio del recorrido desde el nodo: ", inicio + 1)
 BFS(matriz_adyacencia, inicio, nodos)
 
 
